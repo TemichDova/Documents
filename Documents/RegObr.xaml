@@ -1,0 +1,23 @@
+﻿<Window x:Class="Documents.RegObr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Documents"
+        mc:Ignorable="d"
+        Title="RegObr" Height="300" Width="500" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Сохранить" Margin="407,0,10,10" Height="20" VerticalAlignment="Bottom" x:Name="Save_obr" Click="Save_obr_Click"/>
+        <DatePicker Margin="146,72,226,0"  Height="23" VerticalAlignment="Top" x:Name="Date_prBox"/>
+        <TextBox Margin="146,157,226,0" TextWrapping="Wrap" Text="" Height="23" VerticalAlignment="Top" x:Name="FIO_prinBox"/>
+        <TextBox Margin="0,100,72,0" TextWrapping="Wrap" Text="" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" x:Name="Time_pr_doBox"/>
+        <TextBox Margin="146,128,226,0" TextWrapping="Wrap" Text="" Height="23" VerticalAlignment="Top" x:Name="FIO_grBox"/>
+        <TextBox Margin="146,100,226,0" TextWrapping="Wrap" Text="" Height="23" VerticalAlignment="Top" x:Name="Time_pr_sBox"/>
+        <Label Content="Время приёма с:" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата приёма" HorizontalAlignment="Left" Margin="50,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="по" HorizontalAlignment="Right" Margin="0,97,197,0" VerticalAlignment="Top"/>
+        <Label Content="Должностное лицо" HorizontalAlignment="Left" Margin="15,0,0,89" Height="26" VerticalAlignment="Bottom"/>        
+        <Label Content="ФИО гражданина" HorizontalAlignment="Left" Margin="25,128,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Принял" HorizontalAlignment="Left" Margin="340,244,0,0" VerticalAlignment="Top" x:Name="BoolCheck"/>
+    </Grid>
+</Window>

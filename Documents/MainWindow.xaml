@@ -5,8 +5,297 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Documents"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="608" Width="1237" ResizeMode="NoResize">
+    <Grid Margin="0,0,3.6,-0.2">
+        <Menu Height="25" VerticalAlignment="Top" Margin="0,0,-2.6,0">
+            <MenuItem Header="Меню">
+
+                <Separator />
+                <MenuItem Header="Выход" x:Name="ExitWin" Click="ExitWin_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Входящие" x:Name="win_vh" Click="win_vh_Click"></MenuItem>
+            <MenuItem Header="Исходящие" x:Name="win_iz" Click="win_iz_Click"></MenuItem>
+            <MenuItem Header="Приказы" x:Name="win_pr" Click="Win_pr_Click" ></MenuItem>
+            <MenuItem Header="Обращение граждан" x:Name="win_obr" Click="Win_obr_Click"></MenuItem>
+        </Menu>
+
+        <Grid Margin="0,30,0,0" x:Name="Serch_doc_vh_grid"  Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}">
+
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="37,59,0,0" x:Name="SerchComboBoxVH" DisplayMemberPath="Name_form_doc" SelectedValuePath="Id_form_doc"/>
+            <Label Content="Вид" HorizontalAlignment="Left" Margin="7,55,0,0" VerticalAlignment="Top"/>
+            <TextBox Height="23" Margin="10,94,5,0" TextWrapping="Wrap" Text="Введите ключевые слова" VerticalAlignment="Top" x:Name="mainSerchBox"/>
+            <Label Content="Фильтр" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="74,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="num_vhSerch"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="248,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="reg_vhSerch"/>
+            <DataGrid  Margin="10,247,10,10" x:Name="DocGridVH" AutoGenerateColumns="False" MouseDoubleClick="ChangeBackground" IsReadOnly="True" >
+                <DataGrid.Columns >
+                    <DataGridTextColumn Binding="{Binding Reg_num}" Header="Рег №" Width="60"  />
+                    <DataGridTextColumn Binding="{Binding Data_reg, StringFormat=dd.MM.yyyy}" Header="Дата регистрации" Width="*"  />
+                    <DataGridTextColumn Binding="{Binding Post_num}" Header="№ пост/исп" Width="*" />
+                    <DataGridTextColumn Binding="{Binding From_doc}" Header="Организация" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Sign_doc}" Header="ФИО" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Data_isp, StringFormat=dd.MM.yyyy}" Header="Срок исполнения" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Входящие документы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label Content="№ поступ" HorizontalAlignment="Left" Margin="10,159,0,0" VerticalAlignment="Top"/>
+            <Label Content="Рег №" HorizontalAlignment="Left" Margin="199,163,0,0" VerticalAlignment="Top"/>
+            <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="115,219,0,0" x:Name="Creaty_doc_vh" RenderTransformOrigin="0.973,0.545" Click="Creaty_doc_vh_Click"/>
+            <Button Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="10,219,0,0" x:Name="Reg_doc_vh" Click="Reg_doc_vh_Click"/>
+
+            <Button Content="Искать" VerticalAlignment="Top" Margin="1065,219,90,0" x:Name="SerchVh" Click="SerchVh_Click"/>
+            <Button Content="Очистить" VerticalAlignment="Top" Margin="1142,219,13,0" x:Name="clearSerchVH" Click="clearSerchVH_Click"/>
+        </Grid>
+        <Grid Margin="0,30,0,0" x:Name="Reg_doc_vh_grid" Height="550" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden">
+
+
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="14,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51" x:Name="Copies_num_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="92,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107" x:Name="Sheets_doc_el_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="204,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Sheets_doc_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="334,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Sheets_apps_doc_textbox"/>
+            <Label Content="Регистрация Входящие документы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label Content="Листов элект. док" HorizontalAlignment="Left" Margin="92,181,0,0" VerticalAlignment="Top"/>
+            <Label Content="Приложения" HorizontalAlignment="Left" Margin="334,181,0,0" VerticalAlignment="Top"/>
+            <Label Content="Кол-во экз." HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top"/>
+            <Label Content="Листов осн. док" HorizontalAlignment="Left" Margin="204,181,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="459,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Sheets_notes_doc_textbox"/>
+            <Label Content="Примечания" HorizontalAlignment="Left" Margin="459,181,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="133,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1077" x:Name="Sign_doc_textbox"/>
+            <Label Content="Подписал" HorizontalAlignment="Left" Margin="14,277,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="133,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1077" x:Name="From_doc_textbox"/>
+            <Label Content="Откуда" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="133,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1077" x:Name="Adr_doc_textbox"/>
+            <Label Content="Адресовано" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="41" Margin="133,391,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1077" x:Name="Summary_doc_textbox"/>
+            <Label Content="Краткое содерж." HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="59" Margin="133,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1077" x:Name="Comment_doc_textbox"/>
+            <Label Content="Комментарии" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top"/>
+            <Button Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,520,0,0" x:Name="Save_doc_vh" Click="Save_doc_vh_Click"/>
+            <Button Content="Удалить документ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="92,520,0,0" x:Name="Del_doc_vh" Click="Del_doc_vh_Click"/>
+            <Button Content="Сохранить и зарегистрировать новый" HorizontalAlignment="Left" VerticalAlignment="Top" Width="221" Margin="212,520,0,0" x:Name="Save_doc_vh_and_New" Click="Save_doc_vh_and_New_Click"/>
+            <CheckBox Content="От гражданина" HorizontalAlignment="Left" Margin="1106,303,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,1.6" x:Name="Bool_sign_doc_checkbox" Checked="Bool_sign_doc_checkbox_Checked" Unchecked="Bool_sign_doc_checkbox_Unchecked"/>
+
+
+            <Grid HorizontalAlignment="Left" Height="55" Margin="8,124,0,0" VerticalAlignment="Top" Width="1206" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Grid HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="1206" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <Label Content="Рег №" HorizontalAlignment="Left" Margin="7,0,0,-1" VerticalAlignment="Top"/>
+                    <Label Content="Гриф" HorizontalAlignment="Left" Margin="103,-1,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дата регистрации" HorizontalAlignment="Left" Margin="178,0,0,-1" VerticalAlignment="Top"/>
+                    <Label Content="Дата пост. эл. док." HorizontalAlignment="Left" Margin="302,0,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
+                    <Label Content="№ поступившего" HorizontalAlignment="Left" Margin="430,0,0,-1" VerticalAlignment="Top"/>
+                    <Label Content="Вид документа" HorizontalAlignment="Left" Margin="764,1,0,-2" VerticalAlignment="Top"/>
+                    <Label Content="Срочность" HorizontalAlignment="Left" Margin="920,0,0,-1" VerticalAlignment="Top"/>
+                    <Label Content="Дата поступившего" HorizontalAlignment="Left" Margin="553,0,0,-1" VerticalAlignment="Top"/>
+                </Grid>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="7,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89" x:Name="Reg_num_textbox"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="101,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" x:Name="Griph_textbox"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="180,28,0,0"  VerticalAlignment="Top" Width="120" x:Name="Date_reg_textbox"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="305,28,0,0"  VerticalAlignment="Top" Width="120" x:Name="Date_doc_el_textbox"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="430,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Post_num_textbox"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="766,28,0,0" x:Name="Form_doc_vh" DisplayMemberPath="Name_form_doc" SelectedValuePath="Id_form_doc"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="923,28,0,0" x:Name="Type_doc_vh" DisplayMemberPath="Name_type_doc" SelectedValuePath="Id_type_doc"  />
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="555,28,0,0"  VerticalAlignment="Top" Width="120" x:Name="Post_data_textbox" IsTodayHighlighted="False" />
+                <CheckBox Content="Без даты " HorizontalAlignment="Left" Margin="686,32,0,0" VerticalAlignment="Top" x:Name="Bool_post_data_checkbox" Checked="Bool_post_data_checkbox_Checked" Unchecked="Bool_post_data_checkbox_Unchecked"/>
+                <Label Content="Срок исполнения" HorizontalAlignment="Left" Margin="1085,-1,0,0" VerticalAlignment="Top"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="1085,28,0,0" VerticalAlignment="Top" Width="120" x:Name="Data_ips_textbox"/>
+
+            </Grid>
+
+        </Grid>
+        <Grid Margin="0,30,0,0" x:Name="Serch_doc_iz_grid" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden" >
+            <Button Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="10,219,0,0" x:Name="Reg_doc_iz" Click="Reg_doc_iz_Click"/>
+            <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="115,219,0,0" RenderTransformOrigin="0.973,0.545" x:Name="Creaty_doc_iz" Click="Creaty_doc_iz_Click"/>
+
+            <TextBox Height="23" Margin="10,94,5,0" TextWrapping="Wrap" Text="Введите ключевые слова" VerticalAlignment="Top" Width="1200" x:Name="mainSerchIzBox"/>
+            <Label Content="Фильтр" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="79,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="isp_izSerch"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="248,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="reg_izSerch"/>
+            <DataGrid  Margin="10,247,10,10" x:Name="DocGridIZ" AutoGenerateColumns="False" MouseDoubleClick="SelectDocIz" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Reg_num}" Header="Рег №" Width="60"/>
+                    <DataGridTextColumn Binding="{Binding Data_reg, StringFormat=dd.MM.yyyy}" Header="Дата регистрации" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Isp_num_doc}" Header="№ пост/исп" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Org_ispoln}" Header="Организация" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding FIO_ispoln}" Header="ФИО исполнителя" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="№ исп. док." HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top"/>
+            <Label Content="Рег №" HorizontalAlignment="Left" Margin="199,162,0,0" VerticalAlignment="Top"/>
+
+            <Button Content="Искать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="1059,219,0,0" x:Name="SerchIz" Click="SerchIz_Click"/>
+            <Button Content="Очистить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="1139,219,0,0" x:Name="clearSerchIz" Click="clearSerchIz_Click"/>
+            <Label Content="Исходящие документы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        </Grid>
+        <Grid Margin="0,30,0,0" x:Name="Reg_doc_iz_grid"  Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden">
+
+            <Label Content="Регистрация Исходящие документы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="130,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" x:Name="Copies_num_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="258,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" x:Name="Sheets_doc_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="414,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" x:Name="Sheets_apps_doc_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="573,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" x:Name="Sheets_notes_doc_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="36" Margin="130,283,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1066" x:Name="Summary_doc_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="42" Margin="130,344,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1066" x:Name="Comment_doc_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="200,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205" x:Name="FIO_podpis_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" x:Name="Org_podpis_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" x:Name="FIO_ispoln_iz_textbox"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="200,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205" x:Name="Org_ispoln_iz_textbox"/>
+            <Label Content="Кол-во экз." HorizontalAlignment="Left" Margin="49,218,0,0" VerticalAlignment="Top"/>
+            <Label Content="Листов" HorizontalAlignment="Left" Margin="204,218,0,0" VerticalAlignment="Top"/>
+            <Label Content="Приложение" HorizontalAlignment="Left" Margin="332,218,0,0" VerticalAlignment="Top"/>
+            <Label Content="Примечание" HorizontalAlignment="Left" Margin="488,218,0,0" VerticalAlignment="Top"/>
+            <Label Content="Краткое содержание" HorizontalAlignment="Left" Margin="4,282,0,0" VerticalAlignment="Top"/>
+            <Label Content="Комментарий" HorizontalAlignment="Left" Margin="4,341,0,0" VerticalAlignment="Top"/>
+            <Label Content="Поздразделение подписавшего" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top"/>
+            <Label Content="ФИО подписавшего" HorizontalAlignment="Left" Margin="200,391,0,0" VerticalAlignment="Top"/>
+            <Label Content="ФИО исполнителя" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top"/>
+            <Label Content="Подразделенеие исполнителя" HorizontalAlignment="Left" Margin="200,443,0,0" VerticalAlignment="Top"/>
+            <Grid HorizontalAlignment="Left" Height="58" Margin="4,92,0,0" VerticalAlignment="Top" Width="1195" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="141*"/>
+                    <ColumnDefinition Width="301*"/>
+                </Grid.ColumnDefinitions>
+                <Grid HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="1353" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="31*"/>
+                        <ColumnDefinition Width="1322*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Рег №" HorizontalAlignment="Left" Margin="10,0,0,-1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Дата рег." HorizontalAlignment="Left" Margin="54,-1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Гриф" HorizontalAlignment="Left" Margin="175,0,0,-1" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Вид документа" HorizontalAlignment="Left" Margin="251,0,0,-1" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Характер" HorizontalAlignment="Left" Margin="381,0,0,-1" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Срочнсть" HorizontalAlignment="Left" Margin="505,0,0,-1" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Элект. док" HorizontalAlignment="Left" Margin="615,-1,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Штрих-код" HorizontalAlignment="Left" Margin="708,1,0,-1" VerticalAlignment="Top" Grid.Column="1"/>
+
+                </Grid>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" x:Name="Reg_num_iz_textbox" Grid.ColumnSpan="2"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="57,29,0,0" VerticalAlignment="Top" Width="116" Grid.Column="1" x:Name="Data_reg_iz_DatePicker"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="178,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" Grid.Column="1" x:Name="Griph_iz_textbox"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Margin="252,30,0,0" Grid.Column="1" x:Name="Id_form_doc_iz_combobox" DisplayMemberPath="Name_form_doc" SelectedValuePath="Id_form_doc" />
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Margin="382,30,0,0" Grid.Column="1" x:Name="Id_characteristic_doc_iz_combobox" DisplayMemberPath="Name_Characteristic_doc" SelectedValuePath="Id_characteristic_doc" Grid.ColumnSpan="2" />
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="132,30,0,0" Grid.Column="2" x:Name="Id_type_doc_iz_combobox" DisplayMemberPath="Name_type_doc" SelectedValuePath="Id_type_doc"/>
+                <CheckBox Content="Электр. док" HorizontalAlignment="Left" Margin="257,34,0,0" VerticalAlignment="Top" Grid.Column="2" x:Name="Bool_el_doc_iz_checkbox"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="345,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69" Grid.Column="2" x:Name="Shtrih_kod_iz_textbox"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="58" Margin="1,155,0,0" VerticalAlignment="Top" Width="1196" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Grid HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="1356" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <Label Content="Раздел" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="№ поступившего" HorizontalAlignment="Left" Margin="117,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="№ исп. док." HorizontalAlignment="Left" Margin="227,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дата исп. док." HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="№ исп. экз." HorizontalAlignment="Left" Margin="480,0,0,0" VerticalAlignment="Top"/>
+                </Grid>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="10,30,0,0" x:Name="Razel_docComboBox"  DisplayMemberPath="Name_razdel" SelectedValuePath="Id_razdel"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="114,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110" x:Name="Post_num_iz_textbox"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="229,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" x:Name="Isp_num_doc_iz_textbox"/>
+                <DatePicker HorizontalAlignment="Left" Height="23" Margin="374,30,0,0" VerticalAlignment="Top" Width="100" x:Name="Post_data_iz_datepick"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="479,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="88" x:Name="Post_num_isp_iz_textbox"/>
+            </Grid>
+            <Button Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="10,518,0,0" RenderTransformOrigin="0.973,0.545" x:Name="Save_doc_iz" Click="Save_doc_iz_Click"/>
+            <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Margin="115,518,0,0" RenderTransformOrigin="0.973,0.545" x:Name="Del_doc_iz" Click="Del_doc_iz_Click" />
+            <Button Content="Сохранить и создать новый" HorizontalAlignment="Left" VerticalAlignment="Top" Width="156" Margin="239,518,0,0" RenderTransformOrigin="0.973,0.545" x:Name="Save_doc_iz_and_New" Click="Save_doc_iz_and_New_Click"/>
+        </Grid>
+
+
+        <Grid  Margin="0,30,0,0"  x:Name="Prikazi" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden">
+            <Button Content="Сохранить" HorizontalAlignment="Left" Margin="10,519,0,0" VerticalAlignment="Top" Width="76" x:Name="SavePr" Click="SavePr_Click"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="153,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Reg_numPr"/>
+            <DatePicker HorizontalAlignment="Left" Height="23" Margin="299,95,0,0"  VerticalAlignment="Top" Width="120" x:Name="Date_regPr"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="584,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Count_ekzPr"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="715,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Ekz_numPr"/>
+            <ComboBox HorizontalAlignment="Left" Margin="437,96,0,0" VerticalAlignment="Top" Width="120" x:Name="GriphPr"/>
+            <Label Content="Рег №" HorizontalAlignment="Left" Margin="153,64,0,0" VerticalAlignment="Top"/>
+            <Label Content="Дата рег." HorizontalAlignment="Left" Margin="299,64,0,0" VerticalAlignment="Top"/>
+            <Label Content="Гриф" HorizontalAlignment="Left" Margin="437,68,0,0" VerticalAlignment="Top"/>
+            <Label Content="Кол-во экз." HorizontalAlignment="Left" Margin="584,68,0,0" VerticalAlignment="Top"/>
+            <Label Content="Экз №" HorizontalAlignment="Left" Margin="715,69,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="840,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Count_sheetsPr"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="965,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="Count_prilPr"/>
+            <Label Content="кол-во листов" HorizontalAlignment="Left" Margin="850,72,0,0" VerticalAlignment="Top"/>
+            <Label Content="Приложения" HorizontalAlignment="Left" Margin="1014,70,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="51" Margin="131,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="515" RenderTransformOrigin="0.5,0.5" x:Name="SummaryPr">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-0.577"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.257"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Краткое сод." HorizontalAlignment="Left" Margin="28,192,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="51" Margin="128,262,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="515" RenderTransformOrigin="0.5,0.5" x:Name="CommentPr">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-0.577"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.257"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Комментарий" HorizontalAlignment="Left" Margin="28,270,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="28,387,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="405" x:Name="Fio_podPr"/>
+            <Label Content="ФИО подписавшего" HorizontalAlignment="Left" Margin="28,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.358,0.538"/>
+            <Label Content="ФИО исполнителя" HorizontalAlignment="Left" Margin="28,415,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="28,446,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="405" x:Name="Fio_ispPr"/>
+            <Label Content="Регистрация приказа" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Button Content="Сохранить и регистрировать новый" HorizontalAlignment="Left" Margin="190,519,0,0" VerticalAlignment="Top" Width="220"  x:Name="SavePrAndNew" Click="SavePrAndNew_Click"/>
+            <ComboBox HorizontalAlignment="Left" Margin="28,95,0,0" VerticalAlignment="Top" Width="120" x:Name="Form_prCombobox" DisplayMemberPath="Name_form" SelectedValuePath="Id_form_prikaz"/>
+            <Label Content="Тип приказа" HorizontalAlignment="Left" Margin="22,67,0,0" VerticalAlignment="Top"/>
+            <Button Content="Удалить приказ" HorizontalAlignment="Left" Margin="91,519,0,0" VerticalAlignment="Top" Width="94" x:Name="Del_doc_Pr" Click="Del_doc_Pr_Click" />
+        </Grid>
+        <Grid Margin="0,30,0,0" x:Name="Serch_pr_grid"  Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden">
+
+
+
+            <ComboBox HorizontalAlignment="Left" Margin="91,163,0,0" VerticalAlignment="Top" Width="120" x:Name="Secrch_prCombobo" DisplayMemberPath="Name_form" SelectedValuePath="Id_form_prikaz"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="437,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" x:Name="SerchFIOPr"/>
+            <Label Content="ФИО" HorizontalAlignment="Left" Margin="395,163,0,0" VerticalAlignment="Top"/>
+            <Label Content="Фильтр" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="SerchRegPr"/>
+            <DataGrid  Margin="10,247,10,10" x:Name="DocGridPr" AutoGenerateColumns="False" MouseDoubleClick="SelectPr" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Reg_num}" Header="Рег №" Width="60"/>
+                    <DataGridTextColumn Binding="{Binding Date_reg, StringFormat=dd.MM.yyyy}" Header="Дата регистрации" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Fio_pod}" Header="ФИО подписавшего" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Fio_isp}" Header="ФИО исполняющего" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Приказы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label Content="Вид Приказа" HorizontalAlignment="Left" Margin="10,159,0,0" VerticalAlignment="Top"/>
+            <Label Content="Рег №" HorizontalAlignment="Left" Margin="211,159,0,0" VerticalAlignment="Top"/>
+
+            <Button Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="10,220,0,0" x:Name="Reg_Pr" Click="Reg_Pr_Click"/>
+            <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="115,220,0,0" RenderTransformOrigin="0.973,0.545" x:Name="Creaty_Prikaz" Click="Creaty_Prikaz_Click"/>
+            <Button Content="Искать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="1062,219,0,0" x:Name="Serch_prGrid" Click="Serch_prGrid_Click"/>
+            <Button Content="Очистить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="1142,219,0,0" x:Name="ClearSerchPr" Click="ClearSerchPr_Click" RenderTransformOrigin="0.52,0.6"/>
+        </Grid>
+        <Grid Margin="0,30,0,0"  x:Name="Obr_gr" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Visibility="Hidden">
+
+            <Label Content="Прием граждан" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Button Content="Создать" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="74" x:Name="NewObr" Click="NewObr_Click"/>
+            <Label Content="Должностное лицо" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="131,188,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242" x:Name="DolObr"/>
+            <CheckBox Content="Принял" HorizontalAlignment="Left" Margin="378,191,0,0" VerticalAlignment="Top" x:Name="isCheckObr"/>
+            <Button Content="Искать" HorizontalAlignment="Left" Margin="445,222,0,0" VerticalAlignment="Top" Width="74" x:Name="SerchObr" Click="SerchObr_Click"/>
+            <DataGrid Margin="10,247,10,10" x:Name="PrimGrid" AutoGenerateColumns="False"  IsReadOnly="True"  MouseDoubleClick="ObrGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id_appeal_gr}" Header="Рег №" Width="60"/>
+                    <DataGridTextColumn Binding="{Binding Date_pr, StringFormat=dd.MM.yyyy}" Header="Дата приема" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Time_pr_s}" Header="Время с" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Time_pr_do}" Header="до" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding FIO_gr}" Header="ФИО Гражданина" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding FIO_prin}" Header="ФИО должностного лица" Width="*"/>
+                    <DataGridCheckBoxColumn Binding="{Binding Bool_pr }" Header="Принял" Width="100"/>
+
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
     </Grid>
 </Window>

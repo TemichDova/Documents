@@ -1,0 +1,18 @@
+﻿<Window x:Class="Documents.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Documents"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="500">
+    <Grid>
+        <Button Content="Войти" HorizontalAlignment="Center" Margin="183,260,184,0" VerticalAlignment="Top" Width="125" x:Name="Enter" Click="Enter_Click" FontSize="14"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Margin="171,171,171,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" x:Name="LoginText"/>
+        <PasswordBox HorizontalAlignment="Center" Margin="171,220,171,0" VerticalAlignment="Top" Width="150" Height="23" x:Name="PasswordText"/>
+        <Label Content="Вход в систему" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Пароль" HorizontalAlignment="Center" Margin="176,194,251,0" VerticalAlignment="Top" RenderTransformOrigin="-0.68,2.064" FontSize="14" FontWeight="Bold" Width="65"/>
+        <Label Content="Логин" HorizontalAlignment="Center" Margin="176,145,262,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="54"/>
+
+    </Grid>
+</Window>
